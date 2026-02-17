@@ -7,6 +7,10 @@
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
         h1 { color: #0056b3; text-align: center; margin-bottom: 30px; }
+        .search-container { text-align: center; margin-bottom: 20px; }
+        .search-container input[type="text"] { padding: 8px; width: 300px; border: 1px solid #ddd; border-radius: 4px; }
+        .search-container button { padding: 8px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .search-container button:hover { background-color: #0056b3; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
         th { background-color: #0056b3; color: white; cursor: pointer; }
@@ -18,6 +22,14 @@
 </head>
 <body>
     <h1>Carros Clássicos Encontrados</h1>
+
+    <div class="search-container">
+        <form action="/" method="get">
+            <input type="text" name="search" placeholder="Buscar carro..." value="{{ search_term if search_term }}">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
     <table>
         <thead>
             <tr>
@@ -40,6 +52,10 @@
                 <td>{{ car.km }}</td>
                 <td><a href="{{ car.url }}" target="_blank">Ver Anúncio</a></td>
                 <td>{{ car.data_coleta }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7">Nenhum carro encontrado para "{{ search_term }}".</td>
             </tr>
             {% endfor %}
         </tbody>

@@ -69,4 +69,6 @@ def extrair_dados_olx(termo_busca):
         
     except Exception as e:
         print(f"E2rro ao acessar o site: {e}")
-        return resultados22
+        return resultados222
+    
+    

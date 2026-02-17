@@ -2,22 +2,8 @@ import sqlite3
 import pandas as pd
 import argparse
 
-from database import criar_tabela
+from database import criar_tabela, salvar_no_banco # Importar salvar_no_banco
 from scraper import extrair_dados_olx
-
-def salvar_no_banco(dados):
-    conn = sqlite3.connect('carros.db')
-    cursor = conn.cursor()
-    for item in dados:
-        try:
-            cursor.execute('''
-                INSERT INTO anuncios (modelo, preco, ano, km, url) 
-                VALUES (?, ?, ?, ?, ?)
-            ''', (item['modelo'], item['preco'], item['ano'], item['km'], item['url']))
-        except sqlite3.IntegrityError:
-            pass # Ignora se a URL já existir (anúncio duplicado)
-    conn.commit()
-    conn.close()
 
 def analisar_dados():
     conn = sqlite3.connect('carros.db')
