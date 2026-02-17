@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classicos Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; text-align: center; margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #0056b3; color: white; cursor: pointer; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover { background-color: #e0e0e0; }
+        a { color: #0056b3; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Carros Clássicos Encontrados</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Modelo</th>
+                <th>Preço</th>
+                <th>Ano</th>
+                <th>KM</th>
+                <th>URL</th>
+                <th>Data Coleta</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+            <tr>
+                <td>{{ car.id }}</td>
+                <td>{{ car.modelo }}</td>
+                <td>R$ {{ "%.2f" % car.preco }}</td>
+                <td>{{ car.ano }}</td>
+                <td>{{ car.km }}</td>
+                <td><a href="{{ car.url }}" target="_blank">Ver Anúncio</a></td>
+                <td>{{ car.data_coleta }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
