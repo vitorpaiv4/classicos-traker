@@ -100,8 +100,4 @@ Para automatizar a coleta de dados diária (ex: todo dia às 03:00 AM), adicione
     └── ...             # Dependências instaladas
 ```
 
-## Contribuições
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
 
-## Licença
-Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes (se aplicável).
